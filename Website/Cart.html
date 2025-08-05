@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Mitho Nepali Khana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="Index.html" class="logo">
+        <img src="Logo.jpg"> Mitho Nepali Khana</a> 
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <div class="nav-actions">
+        <input type="text" class="search-box" placeholder="Search products..." id="searchBox" onkeydown="handleSearch(event)">
+        <a href="Login.html" class="btn">Login</a>
+        <a href="cart.html" class="btn cart-btn">
+          🛒 Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page active" id="cartPage">
+      <h1 style="text-align: center; margin: 3rem 0 2rem;">Your Cart</h1>
+      <div id="cartItems" style="max-width: 800px; margin: 0 auto;"></div>
+
+      <div class="cart-total" id="cartTotal" style="display: none;">
+        <h2>Total: <span id="totalPrice">0 DKK</span></h2>
+        <a href="checkout.html" class="checkout-btn" style="text-align: center; display: inline-block;">Proceed to Checkout</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>📍 Brunevang 80 B<br>2610 Rødovre</p>
+                <p>📞 Phone: +45-60225083</p>
+                <p>📧 Email: mithonepalikhana@gmail.com</p>
+                <p>🕒 Mon-Fri 9AM-10PM</p>
+                <p>🕒 Weekends 10AM-11PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="Index.html">Home</a></p>
+                <p><a href="Products.html">Products</a></p>
+                <p><a href="About.html">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">YouTube</a></p>
+            </div>
+        </div>
+        <p>© 2025 Mithonepalikahana. All rights reserved.</p>
+  </footer>
+
+  <!-- Cart Script -->
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartContainer = document.getElementById("cartItems");
+      const totalSection = document.getElementById("cartTotal");
+      const totalPriceEl = document.getElementById("totalPrice");
+      const cartCountEl = document.getElementById("cartCount");
+
+      cartContainer.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
+        totalSection.style.display = "none";
+      } else {
+        totalSection.style.display = "block";
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "cart-item";
+
+          itemDiv.innerHTML = `
+            <div>
+              <strong>${item.name}</strong><br>
+              <span>${item.price} DKK x ${item.quantity} = ${itemTotal.toFixed(2)} DKK</span>
+            </div>
+            <div>
+              <button class="btn" onclick="changeQuantity(${index}, -1)">−</button>
+              <span style="margin: 0 10px;">${item.quantity}</span>
+              <button class="btn" onclick="changeQuantity(${index}, 1)">+</button>
+              <button class="btn" style="margin-left: 1rem;" onclick="removeFromCart(${index})">🗑️</button>
+            </div>
+          `;
+
+          cartContainer.appendChild(itemDiv);
+        });
+
+        totalPriceEl.innerText = `${total.toFixed(2)} DKK`;
+      }
+
+      // Update cart count in header
+      if (cartCountEl) {
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountEl.innerText = count;
+      }
+    }
+
+    function changeQuantity(index, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function removeFromCart(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function handleSearch(event) {
+      if (event.key === 'Enter') {
+        const searchTerm = document.getElementById("searchBox").value.trim();
+        if (searchTerm) {
+          window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+        }
+      }
+    }
+
+    window.onload = loadCart;
+  </script>
+
+
+</body>
+</html>

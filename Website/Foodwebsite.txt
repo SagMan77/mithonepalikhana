@@ -1,0 +1,9 @@
+your-website/
+├── index.html          (Homepage)
+├── products.html       (Products)
+├── about.html          (About Us)
+├── mission.html        (Mission & Vision)
+├── payment.html        (Payment)
+├── styles/
+│   └── style.css       (All CSS)
+└── images/             (Store food images here)

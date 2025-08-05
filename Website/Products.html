@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Mitho Nepali Khana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Index.html" class="logo">
+            <img src="Logo.jpg"> Mitho Nepali Khana</a> 
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="About.html">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <input type="text" class="search-box" placeholder="Search products..." id="searchBox" onkeydown="handleSearch(event)">
+                <a href="Login.html" class="btn">Login</a>
+                <a href= "Cart.html" class="btn cart-btn">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page active" id="aboutPage">
+        <h1 style="text-align:center; margin: 3rem 0 2rem;">Our Delicious Menu</h1>
+        
+        <div class="products-grid">
+            <!-- Product 1: Thakali Menu -->
+            <div class="product-card">
+                <img src="Food1.jpg" alt="Thakali" class="product-image">
+                <div class="product-info">
+                    <h3>Thakali Menu</h3>
+                    <p class="product-description">Thakali Menu is made as a typical Nepali food contains bolied Rice with green Vegetables, goat meat and Lentils, made with himalayan masalaas.</p>
+                    <div class="product-price">149 kr</div>
+                    <button class="add-to-cart" data-name="Thakali Menu" data-price="149">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2: Thiar special -->
+            <div class="product-card">
+                <img src="Food2.jpg" alt="Thiar Special" class="product-image">
+                <div class="product-info">
+                    <h3>Thiar Special</h3>
+                    <p class="product-description">Thiar Special menu is used in Nepali festival "Thiar" to celebrate brotherhood, which includes the delicious traditional <strong>Roti</strong> made of rice flour combined with precisely quantity of butter, salt, and sugar. This is served with special Nepali vegetables.</p>
+                    <div class="product-price">129 kr</div>
+                    <button class="add-to-cart" data-name="Thiar Special" data-price="129">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3: Kuyati Soup -->
+            <div class="product-card">
+                <img src="Food3.jpg" alt="Mixed Benas Soup" class="product-image">
+                <div class="product-info">
+                    <h3>Kuyati Soup</h3>
+                    <p class="product-description">Kuyati Soup contains mixed beans which are high in proteins, with special Himalayan spices, specially used in the Nepali traditional festivals.</p>
+                    <div class="product-price">109 kr</div>
+                    <button class="add-to-cart" data-name="Kuyati soup" data-price="109">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4: Nepali Traditional Food -->
+            <div class="product-card">
+                <img src="Food4.jpg" alt="Nepali Traditional Food" class="product-image">
+                <div class="product-info">
+                    <h3>Nepali Traditonal Food</h3>
+                    <p class="product-description">Nepali Traditional Food menu is an old Nepali Food, made of an special flour (kodo) found in the mountain region of Nepal, and is boiled in water. It is served with vegetables and goat meat with some salad.</p>
+                    <div class="product-price">179 kr</div>
+                    <button class="add-to-cart" data-name="Nepali Traditional" data-price="179">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5: Newari Snack -->
+            <div class="product-card">
+                <img src="Food5.jpg" alt="Newari snack" class="product-image">
+                <div class="product-info">
+                    <h3>Newari Snack</h3>
+                    <p class="product-description">Newari snack is the special food from one of the ethinc group of Nepali. It contains bitten rice with lots of mixed beans and vegetables with spices.</p>
+                    <div class="product-price">119 kr</div>
+                    <button class="add-to-cart" data-name="Newari Snack" data-price="119">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5: The MOMO -->
+            <div class="product-card">
+                <img src="Food6.jpg" alt="The MOMO" class="product-image">
+                <div class="product-info">
+                    <h3>The MOMO</h3>
+                    <p class="product-description">The MOMO is a special Nepali food made of wheat flour, meat mixed with spices from Nepal. It can be served with or without soup.</p>
+                    <div class="product-price">80 kr</div>
+                    <button class="add-to-cart" data-name="The MOMO" data-price="80">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>📍 Brunevang 80B<br>2610, Rødovre</p>
+                <p>📞 Phone: +45-60225083</p>
+                <p>📧 Email: mithonepalifood@nepal.com</p>
+                <p>🕒 Hours: Mon-Fri 9-18, Weekends 10-16</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="Index.html">Home</a></p>
+                <p><a href="Products.html">Products</a></p>
+                <p><a href="About.html">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">YouTube</a></p>
+            </div>
+        </div>
+            <p>© 2025 Mithonepalikahana. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Add to cart function
+        function addToCart(event) {
+            const button = event.target;
+            const name = button.getAttribute("data-name");
+            const price = parseFloat(button.getAttribute("data-price"));
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ name, price, quantity: 1 });
+        }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            alert(`${name} added to cart!`);
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const countEl = document.getElementById("cartCount");
+        if (countEl) countEl.innerText = totalQty;
+        }
+
+        // Attach event listeners after DOM is ready
+        window.onload = function () {
+        updateCartCount();
+
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", addToCart);
+        });
+        };
+    </script>
+
+    </body>
+</html>

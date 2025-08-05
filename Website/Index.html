@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Nepali Food | Fresh & Tasty</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Index.html" class="logo">
+            <img src="Logo.jpg"> Mitho Nepali Khana</a> 
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="About.html">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <input type="text" class="search-box" placeholder="Search products..." id="searchBox" onkeydown="handleSearch(event)">
+                <a href="Login.html" class="btn">Login</a>
+                <a href="Cart.html" class="btn cart-btn">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Homepage -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Fresh Home-Cooked Nepali Meals</h1>
+                    <p>Delicious, healthy, and authentic home-style cooking right to your doorstep</p>
+                    <a class="cta-btn" href="Products.html">Order Now</a>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🥘</div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We use only the freshest, locally-sourced ingredients to prepare your meals with love and care.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and reliable delivery service ensuring your food arrives hot and fresh at your door.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Home-Style Cooking</h3>
+                    <p>Authentic home-cooked meals prepared with traditional recipes and modern culinary techniques.</p>
+                </div>
+            </section>
+        </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>📍 Brunevang 80 B<br>2610 Rødovre</p>
+                <p>📞 Phone: +45-60225083</p>
+                <p>📧 Email: mithonepalikhana@gmail.com</p>
+                <p>🕒 Mon-Fri 9AM-10PM</p>
+                <p>🕒 Weekends 10AM-11PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="Index.html">Home</a></p>
+                <p><a href="Products.html">Products</a></p>
+                <p><a href="About.html">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">YouTube</a></p>
+            </div>
+        </div>
+        <p>© 2025 Mithonepalikahana. All rights reserved.</p>
+        </footer>
+
+
+        <script>
+            const images = [
+                "Images/Food1.jpg", "Images/Food2.jpg", "Images/Food3.jpg", "Images/Food4.jpg", "Images/Food5.jpg","Images/Food6.jpg","Images/Food7.jpg","Images/Food8.jpg"
+            ];
+
+            let current = 0;
+
+            function changeBackground() {
+            const hero = document.querySelector('.hero');
+            hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${images[current]}')`;
+            current = (current + 1) % images.length;
+            }
+
+            // Start on load
+            window.onload = function() {
+                changeBackground(); // initial
+                setInterval(changeBackground, 5000); // change every 5 seconds
+            };
+        </script>
+
+        </body>
+</html>

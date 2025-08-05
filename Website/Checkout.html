@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Nepali Food | Fresh & Tasty</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Index.html" class="logo">
+            <img src="Logo.jpg"> Mitho Nepali Khana</a> 
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="About.html">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <input type="text" class="search-box" placeholder="Search products..." id="searchBox" onkeydown="handleSearch(event)">
+                <a href="Login.html" class="btn">Login</a>
+                <a href="Cart.html" class="btn cart-btn">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- Main -->
+  <main>
+    <div class="page active" style="max-width: 500px; margin: 4rem auto;">
+      <h1 style="text-align: center; margin-bottom: 2rem;"></h1>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label for="checkoutEmail">Email *</label>
+          <input type="email" id="checkoutEmail" required />
+        </div>
+
+        <div class="form-group">
+          <label for="checkoutPassword">Password *</label>
+          <input type="password" id="checkoutPassword" required />
+        </div>
+
+        <button id="checkoutBtn" class="btn-dark" style="width: 100%;">Proceed to Payment</button>
+      </form>
+
+      <p id="checkoutMessage" style="text-align:center; margin-top: 1rem; color: red;"></p>
+    </div>
+  </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>📍 Brunevang 80 B<br>2610 Rødovre</p>
+                <p>📞 Phone: +45-60225083</p>
+                <p>📧 Email: mithonepalikhana@gmail.com</p>
+                <p>🕒 Mon-Fri 9AM-10PM</p>
+                <p>🕒 Weekends 10AM-11PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="Index.html">Home</a></p>
+                <p><a href="Products.html">Products</a></p>
+                <p><a href="About.html">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">YouTube</a></p>
+            </div>
+        </div>
+        <p>© 2025 Mithonepalikahana. All rights reserved.</p>
+        </footer>
+
+  <!-- Script -->
+  <script>
+    // Load cart count
+    window.onload = function () {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById("cartCount").innerText = count;
+    };
+
+    function handleSearch(event) {
+      if (event.key === 'Enter') {
+        const searchTerm = document.getElementById("searchBox").value.trim();
+        if (searchTerm) {
+          window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+        }
+      }
+    }
+
+    // Checkout form logic
+    document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("checkoutEmail").value.trim();
+      const password = document.getElementById("checkoutPassword").value;
+
+      // Get registered users from localStorage (assuming saved during login.html)
+      const savedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (!savedUser || savedUser.email !== email || savedUser.password !== password) {
+        document.getElementById("checkoutMessage").innerText = "Invalid email or password.";
+        return;
+      }
+
+      // Proceed to fake payment success
+      alert("✅ Payment Successful! Thank you for your order.");
+      localStorage.removeItem("cart"); // Clear cart
+      window.location.href = "index.html"; // Redirect to homepage or confirmation
+    });
+  </script>
+
+</body>
+</html>
+✅ Important
+In your login.html file, when the user registers, you should save their credentials to localStorage like this:
+
+Add this in login.html’s <script>:
+js
+Kopiér
+Rediger
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const user = {
+    fullName: document.getElementById("fullName").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    city: document.getElementById("city").value.trim(),
+    postal: document.getElementById("postal").value.trim(),
+    password: document.getElementById("password").value,
+  };
+
+  localStorage.setItem("user", JSON.stringify(user));
+  alert("✅ Registered successfully! You can now proceed to checkout.");
+});
